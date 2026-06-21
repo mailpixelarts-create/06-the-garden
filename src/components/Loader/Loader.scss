@@ -1,0 +1,209 @@
+.loader {
+  position: fixed;
+  inset: 0;
+  background: $cream;
+  z-index: $z-loader;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  transition: opacity 0.8s ease, visibility 0.8s ease;
+
+  &.exit {
+    opacity: 0;
+    visibility: hidden;
+  }
+
+  &__content {
+    position: relative;
+    width: 200px;
+    height: 300px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+  }
+
+  &__seed {
+    position: absolute;
+    bottom: 0;
+    opacity: 0;
+    transform: scale(0) rotate(-45deg);
+    transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+
+    &.active {
+      opacity: 1;
+      transform: scale(1) rotate(0deg);
+    }
+
+    .seed-svg {
+      width: 60px;
+      height: 60px;
+    }
+
+    .seed-stem {
+      stroke-dasharray: 30;
+      stroke-dashoffset: 30;
+      animation: drawStem 0.8s ease forwards 0.3s;
+    }
+  }
+
+  &__stem {
+    position: absolute;
+    bottom: 30px;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+
+    &.active {
+      opacity: 1;
+    }
+
+    .stem-svg {
+      width: 100px;
+      height: 200px;
+    }
+
+    .stem-path,
+    .branch-path {
+      stroke-dasharray: 200;
+      stroke-dashoffset: 200;
+    }
+
+    &.active .stem-path {
+      animation: drawPath 1s ease forwards;
+    }
+
+    &.active .branch-path:nth-child(2) {
+      animation: drawPath 0.6s ease forwards 0.4s;
+    }
+
+    &.active .branch-path:nth-child(3) {
+      animation: drawPath 0.6s ease forwards 0.6s;
+    }
+
+    &.active .branch-path:nth-child(4) {
+      animation: drawPath 0.6s ease forwards 0.8s;
+    }
+  }
+
+  &__leaves {
+    position: absolute;
+    bottom: 80px;
+    opacity: 0;
+    transform: scale(0);
+    transition: all 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+
+    &.active {
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    .leaves-svg {
+      width: 200px;
+      height: 200px;
+    }
+
+    .leaf {
+      transform-origin: 100px 80px;
+      opacity: 0;
+    }
+
+    &.active .leaf-1 {
+      animation: leafUnfold 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards 0.1s;
+    }
+
+    &.active .leaf-2 {
+      animation: leafUnfold 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards 0.25s;
+    }
+
+    &.active .leaf-3 {
+      animation: leafUnfold 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards 0.4s;
+    }
+
+    &.active .leaf-4 {
+      animation: leafUnfold 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards 0.55s;
+    }
+  }
+
+  &__logo {
+    position: absolute;
+    bottom: -60px;
+    text-align: center;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+
+    &.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .logo-the {
+      display: block;
+      font-family: $font-body;
+      font-size: 0.75rem;
+      letter-spacing: 0.4em;
+      color: $sage;
+      margin-bottom: 0.25rem;
+    }
+
+    .logo-garden {
+      display: block;
+      font-family: $font-display;
+      font-size: 2.5rem;
+      color: $forest;
+      line-height: 1;
+    }
+
+    .logo-tagline {
+      display: block;
+      font-family: $font-mono;
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      color: $sage;
+      margin-top: 0.5rem;
+      text-transform: uppercase;
+    }
+  }
+
+  &__progress {
+    position: absolute;
+    bottom: 60px;
+    width: 120px;
+    height: 2px;
+    background: $stone;
+    border-radius: 1px;
+    overflow: hidden;
+
+    &-bar {
+      width: 0%;
+      height: 100%;
+      background: $forest;
+      animation: progressFill 3s ease forwards;
+    }
+  }
+}
+
+@keyframes drawStem {
+  to { stroke-dashoffset: 0; }
+}
+
+@keyframes drawPath {
+  to { stroke-dashoffset: 0; }
+}
+
+@keyframes progressFill {
+  0% { width: 0%; }
+  100% { width: 100%; }
+}
+
+@keyframes leafUnfold {
+  0% {
+    opacity: 0;
+    transform: scale(0) rotate(-45deg);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) rotate(0deg);
+  }
+}

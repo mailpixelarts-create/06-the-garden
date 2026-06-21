@@ -1,0 +1,152 @@
+.footer {
+  background: $cream;
+  padding: 4rem 0 2rem;
+  position: relative;
+
+  &__top-line {
+    position: absolute;
+    top: 0;
+    left: 5%;
+    right: 5%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, $stone, transparent);
+  }
+
+  &__content {
+    display: grid;
+    gap: 3rem;
+    margin-bottom: 4rem;
+
+    @media (min-width: $breakpoint-lg) {
+      grid-template-columns: 1fr 2fr;
+      gap: 6rem;
+    }
+  }
+
+  &__brand {
+    max-width: 300px;
+  }
+
+  &__logo {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1rem;
+  }
+
+  &__logo-the {
+    font-family: $font-body;
+    font-size: 0.6rem;
+    letter-spacing: 0.35em;
+    color: $sage;
+    line-height: 1;
+  }
+
+  &__logo-garden {
+    font-family: $font-display;
+    font-size: 1.8rem;
+    color: $forest;
+    line-height: 1;
+  }
+
+  &__tagline {
+    font-family: $font-body;
+    font-size: 0.85rem;
+    font-weight: 300;
+    color: $sage;
+    line-height: 1.7;
+  }
+
+  &__links {
+    display: grid;
+    gap: 2rem;
+
+    @media (min-width: $breakpoint-md) {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  &__column {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  &__column-title {
+    font-family: $font-body;
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: $forest;
+    margin-bottom: 0.5rem;
+  }
+
+  &__link {
+    font-family: $font-body;
+    font-size: 0.85rem;
+    font-weight: 300;
+    color: $sage;
+    text-decoration: none;
+    transition: color 0.3s ease;
+
+    &:hover {
+      color: $gold;
+    }
+  }
+
+  &__bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    padding-top: 2rem;
+    border-top: 1px solid $stone;
+  }
+
+  &__credits {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+  }
+
+  &__studio {
+    font-family: $font-body;
+    font-size: 0.75rem;
+    color: $sage;
+  }
+
+  &__studio-name {
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    color: $forest;
+  }
+
+  &__copyright {
+    font-family: $font-body;
+    font-size: 0.7rem;
+    color: $stone;
+  }
+
+  &__made {
+    font-family: $font-body;
+    font-size: 0.7rem;
+    color: $sage;
+  }
+
+  &__heart {
+    color: #e74c3c;
+  }
+
+  &__empathy {
+    font-weight: 500;
+    color: $forest;
+  }
+
+  &__leaf {
+    opacity: 0.5;
+
+    svg {
+      width: 30px;
+      height: 38px;
+    }
+  }
+}

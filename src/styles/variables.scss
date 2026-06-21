@@ -1,0 +1,38 @@
+// Colors
+$forest: #244534;
+$sage: #7E9879;
+$cream: #F7F4EE;
+$stone: #D9D5CE;
+$glass: rgba(255, 255, 255, 0.08);
+$glass-border: rgba(255, 255, 255, 0.12);
+$gold: #B79A65;
+
+// Typography
+$font-display: 'DM Serif Display', serif;
+$font-body: 'Inter', sans-serif;
+$font-mono: 'Space Mono', monospace;
+
+// Spacing
+$space-xs: 0.25rem;
+$space-sm: 0.5rem;
+$space-md: 1rem;
+$space-lg: 2rem;
+$space-xl: 4rem;
+$space-2xl: 8rem;
+
+// Breakpoints
+$breakpoint-sm: 576px;
+$breakpoint-md: 768px;
+$breakpoint-lg: 1024px;
+$breakpoint-xl: 1440px;
+
+// Transitions
+$transition-fast: 0.2s ease;
+$transition-base: 0.4s ease;
+$transition-slow: 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+$transition-botanical: 1.2s cubic-bezier(0.19, 1, 0.22, 1);
+
+// Z-index
+$z-cursor: 9999;
+$z-nav: 1000;
+$z-loader: 10000;

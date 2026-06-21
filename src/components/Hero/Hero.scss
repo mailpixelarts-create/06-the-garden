@@ -1,0 +1,320 @@
+.hero {
+  position: relative;
+  height: 100vh;
+  min-height: 700px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background: linear-gradient(175deg, $cream 0%, #e8e4dc 50%, $stone 100%);
+
+  &__fog {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(
+      ellipse at 50% 100%,
+      rgba(247, 244, 238, 0.9) 0%,
+      rgba(247, 244, 238, 0.4) 50%,
+      transparent 80%
+    );
+    pointer-events: none;
+    z-index: 2;
+  }
+
+  &__glass-roof {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 40%;
+    background: linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.15) 0%,
+      transparent 100%
+    );
+    pointer-events: none;
+    z-index: 1;
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 10%;
+      right: 10%;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+    }
+  }
+
+  &__light-rays {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  &__light-ray {
+    position: absolute;
+    top: -10%;
+    width: 200px;
+    height: 120%;
+    background: linear-gradient(
+      180deg,
+      rgba(183, 154, 101, 0.08) 0%,
+      rgba(183, 154, 101, 0.02) 60%,
+      transparent 100%
+    );
+    transform-origin: top center;
+    animation: lightRay 8s ease-in-out infinite;
+
+    &--1 {
+      left: 20%;
+      transform: rotate(-5deg);
+      animation-delay: 0s;
+    }
+
+    &--2 {
+      left: 50%;
+      transform: rotate(2deg);
+      width: 250px;
+      animation-delay: 2s;
+    }
+
+    &--3 {
+      left: 75%;
+      transform: rotate(5deg);
+      animation-delay: 4s;
+    }
+  }
+
+  &__leaves {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 3;
+  }
+
+  &__leaf {
+    position: absolute;
+    animation: floatSlow 12s ease-in-out infinite;
+
+    &--1 {
+      top: 15%;
+      right: 10%;
+      width: 80px;
+      transform: rotate(15deg);
+      animation-delay: 0s;
+    }
+
+    &--2 {
+      top: 60%;
+      left: 8%;
+      width: 60px;
+      transform: rotate(-30deg);
+      animation-delay: 3s;
+    }
+
+    &--3 {
+      bottom: 20%;
+      right: 15%;
+      width: 50px;
+      transform: rotate(45deg);
+      animation-delay: 6s;
+    }
+  }
+
+  &__content {
+    position: relative;
+    z-index: 5;
+    text-align: center;
+    padding: 0 2rem;
+    transition: transform 0.3s ease-out;
+  }
+
+  &__tag {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    opacity: 0;
+    animation: fadeInUp 0.8s ease forwards 0.5s;
+  }
+
+  &__tag-line {
+    width: 40px;
+    height: 1px;
+    background: $gold;
+  }
+
+  &__tag-text {
+    font-family: $font-mono;
+    font-size: 0.7rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: $sage;
+  }
+
+  &__title {
+    margin-bottom: 1.5rem;
+    opacity: 0;
+    animation: fadeInUp 0.8s ease forwards 0.7s;
+  }
+
+  &__title-line {
+    display: block;
+    font-family: $font-display;
+    font-size: clamp(3rem, 12vw, 10rem);
+    line-height: 0.9;
+    color: $forest;
+    letter-spacing: -0.02em;
+
+    &--accent {
+      color: $forest;
+      position: relative;
+
+      &::after {
+        content: '';
+        position: absolute;
+        bottom: 5%;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 110%;
+        height: 30%;
+        background: rgba(126, 152, 121, 0.15);
+        z-index: -1;
+        border-radius: 4px;
+      }
+    }
+  }
+
+  &__subtitle {
+    font-family: $font-body;
+    font-size: 1.1rem;
+    font-weight: 300;
+    color: $sage;
+    line-height: 1.7;
+    margin-bottom: 2.5rem;
+    opacity: 0;
+    animation: fadeInUp 0.8s ease forwards 0.9s;
+  }
+
+  &__cta {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    opacity: 0;
+    animation: fadeInUp 0.8s ease forwards 1.1s;
+  }
+
+  &__btn {
+    font-family: $font-body;
+    font-size: 0.8rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 1rem 2rem;
+    border-radius: 100px;
+    text-decoration: none;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+
+    &--primary {
+      background: $forest;
+      color: $cream;
+
+      &:hover {
+        background: $sage;
+        transform: translateY(-2px);
+        box-shadow: 0 10px 30px rgba(36, 69, 52, 0.3);
+      }
+    }
+
+    &--secondary {
+      background: transparent;
+      color: $forest;
+      border: 1px solid $stone;
+
+      &:hover {
+        border-color: $gold;
+        color: $gold;
+      }
+    }
+  }
+
+  &__coffee-steam {
+    position: absolute;
+    bottom: 15%;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 4;
+    pointer-events: none;
+  }
+
+  &__steam {
+    position: absolute;
+    width: 2px;
+    height: 40px;
+    background: linear-gradient(to top, rgba(36, 69, 52, 0.2), transparent);
+    border-radius: 50%;
+    filter: blur(3px);
+    transition: transform 0.5s ease-out;
+    animation: steam 3s ease-in-out infinite;
+
+    &.steam--1 {
+      left: -5px;
+      animation-delay: 0s;
+    }
+
+    &.steam--2 {
+      left: 5px;
+      animation-delay: 0.5s;
+    }
+
+    &.steam--3 {
+      left: 0;
+      animation-delay: 1s;
+    }
+  }
+
+  &__scroll-indicator {
+    position: absolute;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    z-index: 5;
+    opacity: 0;
+    animation: fadeIn 1s ease forwards 1.5s;
+  }
+
+  &__scroll-text {
+    font-family: $font-mono;
+    font-size: 0.6rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: $sage;
+  }
+
+  &__scroll-line {
+    width: 1px;
+    height: 40px;
+    background: linear-gradient(to bottom, $sage, transparent);
+    animation: scrollPulse 2s ease-in-out infinite;
+  }
+}
+
+@keyframes lightRay {
+  0%, 100% { opacity: 0.5; }
+  50% { opacity: 1; }
+}
+
+@keyframes scrollPulse {
+  0%, 100% { opacity: 1; transform: scaleY(1); }
+  50% { opacity: 0.5; transform: scaleY(0.6); }
+}
