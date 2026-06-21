@@ -1,0 +1,197 @@
+.sustainability {
+  background: linear-gradient(180deg, $cream 0%, #e8e4dc 100%);
+  position: relative;
+  overflow: hidden;
+
+  &__vines {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  &__vine {
+    position: absolute;
+    width: 200px;
+    height: 100%;
+
+    &--1 {
+      left: -50px;
+      top: 0;
+    }
+
+    &--2 {
+      right: -50px;
+      top: 0;
+    }
+  }
+
+  &__vine-path {
+    stroke-dasharray: 1200;
+    stroke-dashoffset: 1200;
+    transition: stroke-dashoffset 3s ease;
+
+    .revealed & {
+      stroke-dashoffset: 0;
+    }
+  }
+
+  &__vine-leaf {
+    opacity: 0;
+    transform: scale(0);
+    transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+
+    .revealed & {
+      opacity: 0.3;
+      transform: scale(1);
+    }
+
+    .revealed &:nth-child(2) {
+      transition-delay: 1s;
+    }
+
+    .revealed &:nth-child(3) {
+      transition-delay: 1.5s;
+    }
+  }
+
+  &__header {
+    text-align: center;
+    margin-bottom: 5rem;
+    position: relative;
+    z-index: 1;
+  }
+
+  &__label {
+    font-family: $font-mono;
+    font-size: 0.7rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: $sage;
+    display: block;
+    margin-bottom: 1rem;
+  }
+
+  &__title {
+    font-family: $font-display;
+    font-size: clamp(2.5rem, 6vw, 4.5rem);
+    color: $forest;
+    line-height: 1.1;
+    margin-bottom: 1.5rem;
+  }
+
+  &__subtitle {
+    font-family: $font-body;
+    font-size: 1.1rem;
+    font-weight: 300;
+    color: $sage;
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.7;
+  }
+
+  &__stats {
+    display: grid;
+    gap: 2rem;
+    margin-bottom: 4rem;
+    position: relative;
+    z-index: 1;
+
+    @media (min-width: $breakpoint-md) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @media (min-width: $breakpoint-lg) {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+
+  &__stat {
+    text-align: center;
+    padding: 2.5rem 1.5rem;
+    background: rgba(255, 255, 255, 0.6);
+    border-radius: 16px;
+    border: 1px solid rgba(126, 152, 121, 0.1);
+    position: relative;
+    overflow: hidden;
+    transition: all 0.4s ease;
+
+    &:hover {
+      transform: translateY(-4px);
+      border-color: $gold;
+
+      .sustainability__leaf-particle {
+        animation: leafParticle 1.5s ease forwards;
+      }
+    }
+  }
+
+  &__stat-value {
+    font-family: $font-mono;
+    font-size: 3rem;
+    font-weight: 700;
+    color: $forest;
+    line-height: 1;
+    margin-bottom: 0.5rem;
+  }
+
+  &__stat-suffix {
+    font-size: 1.5rem;
+    color: $gold;
+  }
+
+  &__stat-label {
+    font-family: $font-body;
+    font-size: 0.8rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: $sage;
+  }
+
+  &__leaf-particles {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    pointer-events: none;
+  }
+
+  &__leaf-particle {
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    background: $sage;
+    border-radius: 50% 0 50% 0;
+    opacity: 0;
+  }
+
+  &__commitments {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2rem;
+    padding-top: 3rem;
+    border-top: 1px solid $stone;
+    position: relative;
+    z-index: 1;
+  }
+
+  &__commitment {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-family: $font-body;
+    font-size: 0.85rem;
+    color: $forest;
+
+    &-icon {
+      width: 24px;
+      height: 24px;
+      color: $gold;
+
+      svg {
+        width: 100%;
+        height: 100%;
+      }
+    }
+  }
+}

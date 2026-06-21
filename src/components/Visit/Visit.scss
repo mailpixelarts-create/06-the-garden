@@ -1,0 +1,264 @@
+.visit {
+  background: $forest;
+  color: $cream;
+  overflow: hidden;
+
+  &__header {
+    text-align: center;
+    margin-bottom: 4rem;
+  }
+
+  &__label {
+    font-family: $font-mono;
+    font-size: 0.7rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: $gold;
+    display: block;
+    margin-bottom: 1rem;
+  }
+
+  &__title {
+    font-family: $font-display;
+    font-size: clamp(2.5rem, 6vw, 4.5rem);
+    color: $cream;
+    line-height: 1.1;
+  }
+
+  &__content {
+    display: grid;
+    gap: 3rem;
+    align-items: center;
+
+    @media (min-width: $breakpoint-lg) {
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+    }
+  }
+
+  &__map-container {
+    aspect-ratio: 1;
+    max-height: 500px;
+    position: relative;
+  }
+
+  &__map {
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    position: relative;
+    overflow: hidden;
+  }
+
+  &__map-grid {
+    position: absolute;
+    inset: 0;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    gap: 1px;
+    opacity: 0.1;
+  }
+
+  &__map-line {
+    background: rgba(255, 255, 255, 0.3);
+  }
+
+  &__map-pin {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  &__map-pin-dot {
+    width: 12px;
+    height: 12px;
+    background: $gold;
+    border-radius: 50%;
+    position: relative;
+    z-index: 2;
+  }
+
+  &__map-pin-ring {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 40px;
+    height: 40px;
+    border: 1px solid $gold;
+    border-radius: 50%;
+    animation: pulse 2s ease-in-out infinite;
+
+    &--2 {
+      width: 60px;
+      height: 60px;
+      animation-delay: 0.5s;
+      opacity: 0.5;
+    }
+  }
+
+  &__map-label {
+    position: absolute;
+    bottom: 20%;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    white-space: nowrap;
+
+    span {
+      display: block;
+      font-family: $font-mono;
+      font-size: 0.6rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+
+      &:first-child {
+        color: $gold;
+        font-size: 0.7rem;
+      }
+
+      &:last-child {
+        color: rgba(247, 244, 238, 0.6);
+      }
+    }
+  }
+
+  &__card {
+    background: $glass;
+    backdrop-filter: blur(30px);
+    border: 1px solid $glass-border;
+    border-radius: 24px;
+    overflow: hidden;
+    position: relative;
+    transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+
+    &--hovered {
+      border-color: rgba(183, 154, 101, 0.3);
+      transform: translateY(-4px);
+
+      .visit__card-glass-effect {
+        opacity: 0.15;
+      }
+    }
+  }
+
+  &__card-content {
+    padding: 2.5rem;
+    position: relative;
+    z-index: 2;
+
+    @media (min-width: $breakpoint-lg) {
+      padding: 3rem;
+    }
+  }
+
+  &__card-title {
+    font-family: $font-body;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: $gold;
+    margin-bottom: 1rem;
+  }
+
+  &__card-hours {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  &__card-row {
+    display: flex;
+    justify-content: space-between;
+    font-family: $font-body;
+    font-size: 0.9rem;
+    color: rgba(247, 244, 238, 0.8);
+
+    @media (max-width: $breakpoint-md) {
+      flex-direction: column;
+      gap: 0.25rem;
+    }
+  }
+
+  &__card-divider {
+    height: 1px;
+    background: rgba(255, 255, 255, 0.1);
+    margin: 1.5rem 0;
+  }
+
+  &__card-address {
+    font-family: $font-body;
+    font-size: 0.9rem;
+    font-weight: 300;
+    color: rgba(247, 244, 238, 0.8);
+    line-height: 1.7;
+  }
+
+  &__card-contact {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  &__card-link {
+    font-family: $font-body;
+    font-size: 0.9rem;
+    color: rgba(247, 244, 238, 0.8);
+    text-decoration: none;
+    transition: color 0.3s ease;
+
+    &:hover {
+      color: $gold;
+    }
+  }
+
+  &__card-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-family: $font-body;
+    font-size: 0.8rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: $cream;
+    background: $gold;
+    padding: 1rem 2rem;
+    border-radius: 100px;
+    text-decoration: none;
+    margin-top: 1.5rem;
+    transition: all 0.4s ease;
+
+    svg {
+      width: 18px;
+      height: 18px;
+      transition: transform 0.3s ease;
+    }
+
+    &:hover {
+      background: darken($gold, 10%);
+      transform: translateY(-2px);
+
+      svg {
+        transform: translateX(4px);
+      }
+    }
+  }
+
+  &__card-glass-effect {
+    position: absolute;
+    top: -50%;
+    right: -50%;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle, rgba(183, 154, 101, 0.1) 0%, transparent 60%);
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    pointer-events: none;
+  }
+}

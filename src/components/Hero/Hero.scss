@@ -1,0 +1,345 @@
+@import '../../styles/variables';
+
+.hero {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  min-height: 700px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(175deg, $cream 0%, #e8e4dc 50%, $stone 100%);
+  overflow: hidden;
+
+  // ─── Botanical Layer ──────────────────────────────
+  &__botanical {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  // ─── Light Rays ──────────────────────────────────
+  &__light-rays {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 100%;
+    z-index: 2;
+  }
+
+  &__ray {
+    position: absolute;
+    top: -10%;
+    width: 200px;
+    height: 120%;
+    background: linear-gradient(
+      180deg,
+      rgba($gold, 0.1) 0%,
+      rgba($gold, 0.03) 60%,
+      transparent 100%
+    );
+    transform-origin: top center;
+
+    &--1 {
+      left: 20%;
+      transform: rotate(-5deg);
+      width: 180px;
+    }
+
+    &--2 {
+      left: 50%;
+      transform: rotate(2deg);
+      width: 250px;
+    }
+
+    &--3 {
+      left: 75%;
+      transform: rotate(5deg);
+      width: 160px;
+    }
+  }
+
+  // ─── Leaves ──────────────────────────────────────
+  &__leaves {
+    position: absolute;
+    inset: 0;
+    z-index: 3;
+  }
+
+  &__leaf {
+    position: absolute;
+
+    &--1 { top: 10%; right: 12%; width: 80px; transform: rotate(15deg); }
+    &--2 { top: 25%; left: 8%; width: 55px; transform: rotate(-25deg); }
+    &--3 { top: 55%; right: 8%; width: 65px; transform: rotate(30deg); }
+    &--4 { bottom: 30%; left: 15%; width: 45px; transform: rotate(-15deg); }
+    &--5 { top: 15%; left: 30%; width: 40px; transform: rotate(40deg); }
+    &--6 { bottom: 20%; right: 20%; width: 50px; transform: rotate(-35deg); }
+    &--7 { top: 40%; left: 5%; width: 35px; transform: rotate(20deg); }
+    &--8 { bottom: 15%; left: 40%; width: 42px; transform: rotate(-10deg); }
+  }
+
+  &__leaf-shape {
+    fill: $sage;
+    opacity: 0.2;
+  }
+
+  &__leaf-vein {
+    stroke: $forest;
+    stroke-width: 0.8;
+    opacity: 0.3;
+    fill: none;
+  }
+
+  // ─── Mist ────────────────────────────────────────
+  &__mist {
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+  }
+
+  &__mist-layer {
+    position: absolute;
+    width: 100%;
+    height: 40%;
+
+    &--1 {
+      bottom: 0;
+      background: linear-gradient(
+        to top,
+        rgba($cream, 0.95) 0%,
+        rgba($cream, 0.5) 40%,
+        transparent 100%
+      );
+    }
+
+    &--2 {
+      bottom: 10%;
+      left: -10%;
+      width: 120%;
+      background: radial-gradient(
+        ellipse at 30% 80%,
+        rgba($cream, 0.4) 0%,
+        transparent 60%
+      );
+    }
+
+    &--3 {
+      bottom: 5%;
+      right: -10%;
+      width: 120%;
+      background: radial-gradient(
+        ellipse at 70% 90%,
+        rgba($stone, 0.3) 0%,
+        transparent 50%
+      );
+    }
+  }
+
+  // ─── Glass Roof ──────────────────────────────────
+  &__glass-roof {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 40%;
+    z-index: 1;
+
+    svg {
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  &__roof-line {
+    fill: none;
+    stroke: rgba($gold, 0.12);
+    stroke-width: 1;
+    stroke-dasharray: 2000;
+    stroke-dashoffset: 2000;
+
+    &--2 {
+      stroke: rgba($sage, 0.08);
+      stroke-width: 0.5;
+    }
+  }
+
+  // ─── Content ──────────────────────────────────────
+  &__content {
+    position: relative;
+    z-index: 5;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: $space-lg;
+    padding: 0 $space-lg;
+    will-change: transform, opacity;
+  }
+
+  // ─── Tag ──────────────────────────────────────────
+  &__tag {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: $space-md;
+    opacity: 0;
+  }
+
+  &__tag-line {
+    width: 40px;
+    height: 1px;
+    background: $gold;
+    transform-origin: center;
+  }
+
+  span {
+    font-family: $font-mono;
+    font-size: 0.65rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: $sage;
+  }
+
+  // ─── Title ────────────────────────────────────────
+  &__title {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+    margin: 0;
+  }
+
+  &__title-line {
+    display: block;
+    font-family: $font-display;
+    font-size: clamp(3rem, 12vw, 10rem);
+    line-height: 0.9;
+    color: $forest;
+    letter-spacing: -0.02em;
+    opacity: 0;
+
+    &--accent {
+      color: $forest;
+      position: relative;
+
+      &::after {
+        content: '';
+        position: absolute;
+        bottom: 5%;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 110%;
+        height: 30%;
+        background: rgba($sage, 0.15);
+        z-index: -1;
+        border-radius: 4px;
+      }
+    }
+  }
+
+  // ─── Divider ──────────────────────────────────────
+  &__divider {
+    opacity: 0;
+  }
+
+  &__divider-leaf {
+    width: 24px;
+    height: 24px;
+    color: $sage;
+  }
+
+  // ─── Subtitle ─────────────────────────────────────
+  &__subtitle {
+    font-family: $font-body;
+    font-size: clamp(0.9rem, 1.1vw, 1.1rem);
+    font-weight: 300;
+    line-height: 1.7;
+    color: rgba($forest, 0.6);
+    max-width: 450px;
+    margin: 0;
+    opacity: 0;
+  }
+
+  // ─── Actions ──────────────────────────────────────
+  &__actions {
+    display: flex;
+    gap: $space-md;
+    justify-content: center;
+  }
+
+  &__btn {
+    font-family: $font-body;
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 0.9rem 2rem;
+    border-radius: 100px;
+    text-decoration: none;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    opacity: 0;
+
+    &--primary {
+      background: $forest;
+      color: $cream;
+
+      &:hover {
+        background: darken($forest, 8%);
+        transform: translateY(-2px);
+        box-shadow: 0 10px 30px rgba($forest, 0.25);
+      }
+    }
+
+    &--secondary {
+      background: transparent;
+      color: $forest;
+      border: 1px solid $stone;
+
+      &:hover {
+        border-color: $gold;
+        color: $gold;
+      }
+    }
+  }
+
+  // ─── Scroll Indicator ─────────────────────────────
+  &__scroll-indicator {
+    position: absolute;
+    bottom: $space-xl;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: $space-sm;
+    z-index: 5;
+    opacity: 0;
+
+    span {
+      font-family: $font-mono;
+      font-size: 0.55rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: rgba($forest, 0.35);
+    }
+  }
+
+  &__scroll-track {
+    width: 1px;
+    height: 40px;
+    background: rgba($forest, 0.1);
+    position: relative;
+    overflow: hidden;
+  }
+
+  &__scroll-thumb {
+    width: 100%;
+    height: 12px;
+    background: $sage;
+    position: absolute;
+    top: -12px;
+  }
+}

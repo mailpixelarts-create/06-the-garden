@@ -1,0 +1,149 @@
+.chef-selection {
+  background: $cream;
+  overflow: hidden;
+
+  &__header {
+    text-align: center;
+    margin-bottom: 4rem;
+  }
+
+  &__label {
+    font-family: $font-mono;
+    font-size: 0.7rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: $sage;
+    display: block;
+    margin-bottom: 1rem;
+  }
+
+  &__title {
+    font-family: $font-display;
+    font-size: clamp(2.5rem, 6vw, 4.5rem);
+    color: $forest;
+    line-height: 1.1;
+  }
+
+  &__grid {
+    display: grid;
+    gap: 1px;
+    background: $stone;
+    border: 1px solid $stone;
+    border-radius: 12px;
+    overflow: hidden;
+    margin-bottom: 3rem;
+
+    @media (min-width: $breakpoint-md) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  &__item {
+    background: $cream;
+    padding: 2rem;
+    transition: all 0.4s ease;
+    cursor: pointer;
+
+    &:hover {
+      background: rgba(126, 152, 121, 0.05);
+
+      .chef-selection__item-line {
+        width: 60px;
+        background: $gold;
+      }
+
+      .chef-selection__item-name {
+        color: $gold;
+      }
+    }
+  }
+
+  &__item-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.75rem;
+  }
+
+  &__item-category {
+    font-family: $font-mono;
+    font-size: 0.6rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: $sage;
+  }
+
+  &__item-price {
+    font-family: $font-mono;
+    font-size: 1rem;
+    color: $forest;
+    display: flex;
+    align-items: flex-start;
+    gap: 2px;
+  }
+
+  &__currency {
+    font-size: 0.75rem;
+    margin-top: 0.2rem;
+  }
+
+  &__item-name {
+    font-family: $font-display;
+    font-size: 1.4rem;
+    color: $forest;
+    margin-bottom: 0.5rem;
+    transition: color 0.3s ease;
+  }
+
+  &__item-description {
+    font-family: $font-body;
+    font-size: 0.85rem;
+    font-weight: 300;
+    color: $sage;
+    line-height: 1.5;
+    margin-bottom: 1rem;
+  }
+
+  &__item-line {
+    width: 30px;
+    height: 2px;
+    background: $stone;
+    transition: all 0.4s ease;
+  }
+
+  &__cta {
+    text-align: center;
+  }
+
+  &__btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-family: $font-body;
+    font-size: 0.8rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: $forest;
+    padding: 1rem 2rem;
+    border: 1px solid $forest;
+    border-radius: 100px;
+    text-decoration: none;
+    transition: all 0.4s ease;
+
+    svg {
+      width: 18px;
+      height: 18px;
+      transition: transform 0.3s ease;
+    }
+
+    &:hover {
+      background: $forest;
+      color: $cream;
+
+      svg {
+        transform: translateX(4px);
+      }
+    }
+  }
+}
